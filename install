@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# A simple install script for the dotfiles.
+# If conflicts arise, it will take backups of the old files.
+
+if [ -e ~/.vimrc ]; then
+        echo "~/.vimrc exists, backing up to ~/.vimrc.bak"
+        mv ~/.vimrc ~/.vimrc.bak
+fi
+
+ln -s $PWD/.vimrc /home/$USER/.vimrc
+echo "Created a symlink from $PWD/.vimrc to /home/$USER/.vimrc"
+echo "Use uninstall to revert this"

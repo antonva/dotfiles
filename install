@@ -8,6 +8,6 @@ if [ -e ~/.vimrc ]; then
         mv ~/.vimrc ~/.vimrc.bak
 fi
 
-ln -s $PWD/.vimrc /home/$USER/.vimrc
+ln -s $PWD/vimrc /home/$USER/.vimrc
 echo "Created a symlink from $PWD/.vimrc to /home/$USER/.vimrc"
 echo "Use uninstall to revert this"

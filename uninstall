@@ -3,11 +3,15 @@
 # A simple uninstall script for the dotfiles.
 # If conflicts arise, it will take backups of the old files.
 
-if [ -e ~/.vimrc.bak ]; then
+if [ -e ~/.vimrc.bak ] && [ -e ~/.vimrc ]
+then
 	echo "~/.vimrc.bak found, restoring..."
-	rm ~/.vimrc
 	mv ~/.vimrc.bak ~/.vimrc
+	rm ~/.vimrc.bak
+else
+	rm ~/.vimrc
+	echo "No backup .vimrc was found"
 fi
 
-echo "Removed a symlink from $PWD/.vimrc to /home/$USER/.vimrc"
+echo "Removed a symlink from $PWD/vimrc to /home/$USER/.vimrc"
 echo "Uninstall successful"

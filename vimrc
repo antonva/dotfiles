@@ -64,7 +64,8 @@ nmap <C-n> :NERDTreeToggle<CR>
 " Toggle pastemode"
 set pastetoggle=<leader>p
 
-
+" Set foldmethod."
+set foldmethod=syntax
 " Set a scrolloff to kep context
 set scrolloff=2
 

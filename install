@@ -3,6 +3,9 @@
 # A simple install script for the dotfiles.
 # If conflicts arise, it will take backups of the old files.
 
+# VIMRC
+#####################################################################
+
 if [ -e ~/.vimrc ]; then
         echo "~/.vimrc exists, backing up to ~/.vimrc.bak"
         mv ~/.vimrc ~/.vimrc.bak
@@ -11,3 +14,18 @@ fi
 ln -s $PWD/vimrc /home/$USER/.vimrc
 echo "Created a symlink from $PWD/.vimrc to /home/$USER/.vimrc"
 echo "Use uninstall to revert this"
+
+# PENTADACTYL COLOR & Plugins
+#####################################################################
+
+if [ !-d ~/.pentadactyl/ ]; then
+        echo "~/.pentadactyl does not exist, creating..."
+        mkdir ~/.pentadactyl/{plugins,color}
+fi
+
+if [ -e ~/.pentadactyl/color/smyck.penta ]; then
+        echo "smyck.penta exists, backing up to smyck.penta.bak"
+        mv ~/.pentadactyl/color/smyck.penta ~/.pentadactyl/color/smyck.penta.bak
+fi
+
+

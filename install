@@ -6,6 +6,8 @@
 # VIMRC
 #####################################################################
 
+echo "* VIM "
+echo "********************************************************************************"
 if [ -e ~/.vimrc ]; then
         echo "~/.vimrc exists, backing up to ~/.vimrc.bak"
         mv ~/.vimrc ~/.vimrc.bak
@@ -15,17 +17,22 @@ ln -s $PWD/vimrc /home/$USER/.vimrc
 echo "Created a symlink from $PWD/.vimrc to /home/$USER/.vimrc"
 echo "Use uninstall to revert this"
 
+echo " "
 # PENTADACTYL COLOR & Plugins
 #####################################################################
-
-if [ !-d ~/.pentadactyl/ ]; then
+echo "* PENTADACTYL "
+echo "********************************************************************************"
+if [ ! -d ~/.pentadactyl/ ]; then
         echo "~/.pentadactyl does not exist, creating..."
-        mkdir ~/.pentadactyl/{plugins,color}
+        mkdir -p ~/.pentadactyl/{plugins,colors}
 fi
 
 if [ -e ~/.pentadactyl/color/smyck.penta ]; then
         echo "smyck.penta exists, backing up to smyck.penta.bak"
-        mv ~/.pentadactyl/color/smyck.penta ~/.pentadactyl/color/smyck.penta.bak
+        mv ~/.pentadactyl/colors/smyck.penta ~/.pentadactyl/colors/smyck.penta.bak
 fi
 
+ln -s $PWD/smyck.penta /home/$USER/.pentadactyl/colors/smyck.penta
+echo "Created a symlink from $PWD/smyck.penta to /home/$USER/.pentadactyl/colors/smyck.penta"
+echo " "
 

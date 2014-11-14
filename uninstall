@@ -3,6 +3,11 @@
 # A simple uninstall script for the dotfiles.
 # If conflicts arise, it will take backups of the old files.
 
+# VIMRC
+#####################################################################
+
+echo "* VIM "
+echo "********************************************************************************"
 if [ -e ~/.vimrc.bak ] && [ -e ~/.vimrc ]
 then
 	echo "~/.vimrc.bak found, restoring..."
@@ -14,4 +19,13 @@ else
 fi
 
 echo "Removed a symlink from $PWD/vimrc to /home/$USER/.vimrc"
-echo "Uninstall successful"
+
+echo " "
+# PENTADACTYL COLOR & Plugins
+#####################################################################
+echo "* PENTADACTYL "
+echo "********************************************************************************"
+if [ -d ~/.pentadactyl/ ]; then
+	echo "- Removing ~/.pentadactyl/ completely"
+	rm -rf ~/.pentadactyl
+fi

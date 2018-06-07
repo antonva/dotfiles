@@ -1,0 +1,2 @@
+echo "[::] Removing symlink $HOME/.xinitrc"
+rm $HOME/.xinitrc

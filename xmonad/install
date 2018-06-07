@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ ! -d $HOME/.xmonad]; then
+	echo "[::] $HOME/.xmonad not found, creating..."
+	mkdir $HOME/.xmonad
+fi
+
+echo "[::] Creating symlink from $PWD/xmonad.hs to $HOME/.xmonad/xmonad.hs"
+ln -s $PWD/xmonad.hs $HOME/.xmonad/xmonad.hs

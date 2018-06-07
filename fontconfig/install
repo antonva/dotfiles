@@ -1,0 +1,9 @@
+#!/usr/bin/sh
+
+if [ ! -d $HOME/.config/fontconfig ]; then
+	echo "[::] $HOME/.config/fontconfig not found, creating..."
+	mkdir $HOME/.config/fontconfig
+fi
+
+echo "[::] Creating symlink from $PWD/fonts.conf to $HOME/.config/fontconfig/fonts.conf"
+ln -s $PWD/fonts.conf $HOME/.config/fontconfig/fonts.conf

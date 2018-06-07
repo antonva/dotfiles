@@ -17,23 +17,22 @@ import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Util.EZConfig
 import XMonad.Layout.Spacing
-import DBus
-import DBus.Client
-import System.Taffybar.Hooks.PagerHints (pagerHints)
-import System.Taffybar.XMonadLog (dbusLogWithPP, taffybarDefaultPP, taffybarColor, taffybarEscape)
 
 myTerminal           = "termite"
 myFocusFollowsMouse  = False
 myClickJustFocuses   = False
-myBorderWidth        = 2
+myBorderWidth        = 1
 myModMask            = mod4Mask
 myNormalBorderColor  = "#242424"
-myFocusedBorderColor = "#C75646"
+myFocusedBorderColor = "#8EB33B"
 
 myKeys               = 
     [ (("M-C-b"), sendMessage $ ToggleStruts )
     , (("M-q"  ), spawn myRestart )  
+    , (("M-p"  ), spawn "dmenu_run -w 400 -x 600 -y 450 -l 5 -fn \"Envy Code R-10\" -l 5" )
     ]
+
+--myDmenu = "dmenu_run -w 400 -x 600 -y 450 -fn Envy Code R-10 -l 5 -nb #242424"
 --
 --myMouseBindings      =
 myWorkspaces         = ["dev","web","chat","misc","video","img","VII"] 
@@ -58,7 +57,6 @@ myLayout             = tiled_space ||| tiled ||| mirror_space ||| mirrored ||| f
 
 --myEventHook          = mempty myStartupHook        = do
 myStartupHook = do
-    spawn "taffybar"
     spawn "setxkbmap us"
     spawn "xbindkeys"
     spawn "xmodmap ~/.xmodmap-esc"
@@ -69,17 +67,13 @@ myManageHook         = manageDocks <+> composeAll
     [ 
       className =? "Firefox"   --> doShift "web"
     , className =? "mpv"       --> doShift "video"
-    , className =? "Deluge"    --> doShift "misc"
     ]
 
 --Manually handle the recompilation while killing the statusbar.
-myRestart = "pkill pnmixer && pkill -KILL taffybar && xmonad --recompile && xmonad --restart"
+myRestart = "xmonad --recompile && xmonad --restart"
 
 main = do
-    client <- connectSession
-    let pp = defaultPP
     xmonad    
-        $ ewmh $ pagerHints 
         $ defaultConfig { 
             -- simple stuff
             terminal           = myTerminal,
@@ -94,7 +88,6 @@ main = do
             --mouseBindings      = myMouseBindings,
 
             -- hooks, layouts
-            logHook            = dbusLogWithPP client pp,
             layoutHook         = avoidStruts $ myLayout,
             manageHook         = myManageHook,
             workspaces         = myWorkspaces,

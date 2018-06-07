@@ -1,0 +1,2 @@
+echo "[::] Creating symlink from $PWD/xinitrc to $HOME/.xinitrc"
+ln -s $PWD/xinitrc $HOME/.xinitrc

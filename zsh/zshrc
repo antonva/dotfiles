@@ -1,0 +1,13 @@
+TERM=xterm-256color
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+export PAGER=w3m
+
+#source the rest.
+. ~/.zsh/aliases.zsh
+. ~/.zsh/bindings.zsh
+. ~/.zsh/colors.zsh
+. ~/.zsh/completion.zsh
+. ~/.zsh/config.zsh
+. ~/.zsh/functions.zsh
+. ~/.zsh/prompt.zsh

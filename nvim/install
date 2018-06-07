@@ -1,0 +1,10 @@
+#!/usr/bin/sh
+
+echo "[::] Bootstrapping vim-plug into $HOME/.local/share/nvim/site/audoload/" 
+./bootstrap-vim-plug.sh
+
+echo "[::] Making sure that $HOME/.config/nvim exists..."
+[ ! -d $HOME/.config/nvim ] && mkdir $HOME/.config/nvim 
+
+echo "[::] Creating symlink from $PWD/init.vim to $HOME/.config/nvim/init.vim"
+ln -s $PWD/init.vim $HOME/.config/nvim/init.vim

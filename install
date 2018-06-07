@@ -1,38 +1,28 @@
 #!/bin/sh
 
 # A simple install script for the dotfiles.
-# If conflicts arise, it will take backups of the old files.
 
-# VIMRC
-#####################################################################
+process_title() 
+{
+    t=${1%?}
+    T=$(echo "$t" | tr '[:lower:]' '[:upper:]' | sed 's/./& /g' | xargs)
+    title_length=$(expr ${#T} / 2)
+    printf %$(expr 40 + $title_length)s "$T" 
+    printf "\n"
+    printf %80s | tr " " "*"
+    printf "\n"
+}
 
-echo "* VIM "
-echo "********************************************************************************"
-if [ -e ~/.vimrc ]; then
-        echo "~/.vimrc exists, backing up to ~/.vimrc.bak"
-        mv ~/.vimrc ~/.vimrc.bak
-fi
 
-ln -s $PWD/vimrc /home/$USER/.vimrc
-echo "Created a symlink from $PWD/.vimrc to /home/$USER/.vimrc"
-echo "Use uninstall to revert this"
-
-echo " "
-# PENTADACTYL COLOR & Plugins
-#####################################################################
-echo "* PENTADACTYL "
-echo "********************************************************************************"
-if [ ! -d ~/.pentadactyl/ ]; then
-        echo "~/.pentadactyl does not exist, creating..."
-        mkdir -p ~/.pentadactyl/{plugins,colors}
-fi
-
-if [ -e ~/.pentadactyl/color/smyck.penta ]; then
-        echo "smyck.penta exists, backing up to smyck.penta.bak"
-        mv ~/.pentadactyl/colors/smyck.penta ~/.pentadactyl/colors/smyck.penta.bak
-fi
-
-ln -s $PWD/smyck.penta /home/$USER/.pentadactyl/colors/smyck.penta
-echo "Created a symlink from $PWD/smyck.penta to /home/$USER/.pentadactyl/colors/smyck.penta"
-echo " "
+for d in */; do
+    if [ -d $d ]; then 
+        if [ ! "$d" = "install" ]; then 
+            oldpwd=$PWD
+            process_title "$d"
+            cd $d
+            ./install
+            cd $oldpwd
+        fi
+    fi
+done
 

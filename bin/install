@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ ! -d $HOME/.local/bin ]; then
+	echo "[::] $HOME/.local/bin not found, creating..."
+	mkdir $HOME/.local/bin
+fi
+
+for f in *; do
+	if [ ! "$f" = "install" ]; then
+		echo "[::] Creating symlink from $PWD/$f to $HOME/.local/bin/$f"
+		ln -s $PWD/$f $HOME/.local/bin/$f
+	fi
+done

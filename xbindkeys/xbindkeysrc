@@ -1,0 +1,15 @@
+# Brightness
+#
+# Media keys
+
+# Increase volume
+"pactl set-sink-volume 0 +1000"
+   XF86AudioRaiseVolume
+
+# Decrease volume
+"pactl set-sink-volume 0 -1000"
+   XF86AudioLowerVolume
+
+# Mute/Unmute
+"pactl set-sink-mute 0 toggle"
+   XF86AudioMute

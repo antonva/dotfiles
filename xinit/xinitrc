@@ -1,0 +1,17 @@
+export BROWSER=firefox
+wmname LG3D
+xinput --disable 13
+
+# Display energy saver
+xset +dpms
+xset dpms 0 0 300
+
+# Keybinds and mappings
+xbindkeys -f ~/git/dotfiles/xbindkeys/xbindkeysrc
+xmodmap -e 'clear Lock'
+xmodmap -e ' keycode 0x42=Escape'
+
+# Compositor, background and WM
+compton&
+feh --bg-center ~/Pictures/bg.jpg
+xmonad

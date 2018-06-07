@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ ! -d $HOME/.config/taffybar]; then
+	echo "[::] $HOME/.config/taffybar not found, creating..."
+	mkdir $HOME/.config/taffybar
+fi
+
+echo "[::] Creating symlink from $PWD/taffybar.hs to $HOME/.config/taffybar/taffybar.hs"
+ln -s $PWD/taffybar.hs $HOME/.config/taffybar/taffybar.hs

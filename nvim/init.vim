@@ -25,6 +25,8 @@ Plug 'majutsushi/tagbar'                              " Ctags and other fun tag 
 Plug 'hushicai/tagbar-javascript.vim'                 " More ctags
 Plug 'exu/pgsql.vim'                                  " PostgreSQL syntax.
 Plug 'fatih/vim-go'                                   " GoLang goodies.
+Plug 'neovimhaskell/haskell-vim'                      " Haskell goodies.
+Plug 'alx741/vim-hindent'                             " Haskell goodies.
 
 " VimScripts
 Plug 'vim-scripts/L9'              " All sorts of crazy, FuzzyFind dep.
